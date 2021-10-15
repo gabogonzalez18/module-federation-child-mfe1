@@ -1,0 +1,34 @@
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { AppComponent } from './app.component';
+import { RouterModule } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+import { FlightsModule } from './flights/flights.module';
+import { APP_ROUTES } from './app.routes';
+import { HttpClientModule } from '@angular/common/http';
+import { RendererModule, TransferHttpCacheModule } from '@nguniversal/common/clover';
+import { CmsService } from './services/cms.service';
+// import { NotificationModule } from 'notification-lib';
+
+@NgModule({
+  imports: [
+    BrowserModule.withServerTransition({ appId: 'appId' }),
+    HttpClientModule,
+    FlightsModule,
+    RouterModule.forRoot(APP_ROUTES),
+    RendererModule.forRoot(),
+    TransferHttpCacheModule,
+  ],
+  declarations: [
+    HomeComponent,
+    AppComponent,
+  ],
+  providers: [
+    CmsService,
+    // NotificationService
+  ],
+  bootstrap: [
+      AppComponent
+  ]
+})
+export class AppModule { }
